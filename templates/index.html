@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DermaMatch AI | YouCam Clinical Skin Diagnostic & Routine Builder</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="brand">
+                <span class="logo-icon">✨</span>
+                <span class="brand-name">DermaMatch <strong>AI</strong></span>
+                <span class="powered-by">Powered by Perfect Corp YouCam API</span>
+            </div>
+            <div class="nav-links">
+                <span class="badge-hackathon">YouCam Skin AI Hackathon 2026</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-wrapper">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h1>Clinical Skin Analysis Meets Precision eCommerce</h1>
+            <p>Upload a facial photo or select a demo sample to trigger instant YouCam AI dermatological scanning and receive your personalized regimen.</p>
+        </section>
+
+        <!-- Scanner Card -->
+        <section class="scanner-card">
+            <div class="upload-zone" id="drop-zone">
+                <div class="upload-prompt" id="upload-prompt">
+                    <div class="icon-camera">📷</div>
+                    <h3>Upload Face Photo or Selfie</h3>
+                    <p>PNG, JPG up to 10MB • AI extracts 6 clinical skin health dimensions</p>
+                    <input type="file" id="image-input" accept="image/*" style="display:none;">
+                    <div class="btn-group">
+                        <button class="btn btn-primary" onclick="document.getElementById('image-input').click()">Choose File</button>
+                        <button class="btn btn-outline" id="btn-demo-sample">⚡ Use Demo Sample</button>
+                    </div>
+                </div>
+                <div class="preview-container" id="preview-container" style="display:none;">
+                    <img id="image-preview" src="" alt="Face preview">
+                    <button class="btn btn-sm btn-reupload" onclick="resetUpload()">Change Photo</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results & Diagnosis (Hidden until analyzed) -->
+        <section class="results-container" id="results-section" style="display:none;">
+            <div class="diagnostic-summary">
+                <div class="overall-score-card">
+                    <span class="score-title">Skin Health Index</span>
+                    <div class="score-circle">
+                        <span class="score-number" id="overall-score">--</span>
+                        <span class="score-max">/ 100</span>
+                    </div>
+                    <span class="skin-age-label">Estimated Skin Age: <strong id="skin-age">--</strong></span>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <div class="metric-top"><span>Hydration</span><strong id="m-hydration">--%</strong></div>
+                        <div class="bar-bg"><div class="bar-fill" id="bar-hydration"></div></div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-top"><span>Fine Lines & Wrinkles</span><strong id="m-wrinkles">--%</strong></div>
+                        <div class="bar-bg"><div class="bar-fill" id="bar-wrinkles"></div></div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-top"><span>Skin Texture</span><strong id="m-texture">--%</strong></div>
+                        <div class="bar-bg"><div class="bar-fill" id="bar-texture"></div></div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-top"><span>Dark Circles</span><strong id="m-dark_circles">--%</strong></div>
+                        <div class="bar-bg"><div class="bar-fill" id="bar-dark_circles"></div></div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-top"><span>Spots & Pigmentation</span><strong id="m-spots">--%</strong></div>
+                        <div class="bar-bg"><div class="bar-fill" id="bar-spots"></div></div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-top"><span>Redness & Barrier</span><strong id="m-redness">--%</strong></div>
+                        <div class="bar-bg"><div class="bar-fill" id="bar-redness"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Personalized Skincare Rx & Cart -->
+            <div class="recommendations-card">
+                <div class="rx-header">
+                    <h2>🎯 Targeted Dermatological Regimen</h2>
+                    <span class="concern-pill" id="primary-concern">Primary Concern: Dehydration</span>
+                </div>
+
+                <div class="products-grid" id="products-container"></div>
+
+                <div class="bundle-checkout">
+                    <div class="bundle-pricing">
+                        <span class="bundle-title">Complete 3-Step Prescriptive Regimen</span>
+                        <div class="price-stack">
+                            <span class="original-price" id="original-price">$0.00</span>
+                            <span class="final-price" id="final-price">$0.00</span>
+                            <span class="savings-tag" id="savings-tag">Save 15%</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-checkout" id="btn-checkout" onclick="performCheckout()">🛒 1-Click Bundle Checkout</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
